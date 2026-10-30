@@ -74,3 +74,11 @@
 > The challenges you encountered and how you overcame them
 >
 > Your approach to component composition and state management
+
+<details>
+  <summary><strong> Implementation Steps In Order</strong></summary>
+  1. Start with implmenting Dashboard Component
+     1. Declared css variables in App.css for the project
+     2. Design UI in Dashboard Component
+
+</details>
