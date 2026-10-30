@@ -17,14 +17,22 @@ export default function Dashboard() {
         </div>
       </div>
       <div className="p-5 flex flex-col md:flex-row gap-5 w-full border-3 border-border-custom">
-        <div className="bg-sidebar-bg flex flex-col border-2 border-red-200 w-[18%]">
+        <div className="bg-sidebar-bg flex flex-col w-[18%]">
           <div>1</div>
           <div>2</div>
           <div>3</div>
         </div>
-        <div className="bg-dashboard-bg border-3 border-border-custom w-full">
+        <div className="bg-dashboard-bg w-full flex md:flex-row gap-4">
           {" "}
-          my cards display area here
+          <div className="border-2 border-border-custom rounded-xl flex-1">
+            Pending
+          </div>
+          <div className="border-2 border-border-custom rounded-xl flex-1">
+            In Progress
+          </div>
+          <div className="border-2 border-border-custom rounded-xl flex-1">
+            Completed
+          </div>
         </div>
       </div>
     </div>
