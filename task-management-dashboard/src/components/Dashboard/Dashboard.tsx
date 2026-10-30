@@ -128,22 +128,12 @@ export default function Dashboard() {
           </button>
         </div>
       </div>
-      <div className="p-5 flex flex-col md:flex-row gap-5 w-full border-3 border-border-custom">
-        <div className="bg-sidebar-bg flex flex-col w-[18%] p-5">
+      <div className="p-5 flex flex-col md:flex-row gap-5 w-full border-3 border-border-custom overflow-hidden">
+        <div className="bg-sidebar-bg flex flex-col p-5 md:flex-[1]">
           <h1 className="text-txt-primary text-lg font-semibold">Status</h1>
           <TaskFilter onFilterChange={onFilterChangeFunc} />
         </div>
-        <div className="bg-dashboard-bg w-full flex md:flex-row gap-4">
-          {" "}
-          {/* <div className="border-2 border-border-custom rounded-xl flex-1">
-            Pending
-          </div>
-          <div className="border-2 border-border-custom rounded-xl flex-1">
-            In Progress
-          </div>
-          <div className="border-2 border-border-custom rounded-xl flex-1">
-            Completed
-          </div> */}
+        <div className="bg-dashboard-bg flex md:flex-[5] gap-5 min-w-0 mx-auto justify-center">
           <TaskList
             tasks={tasks}
             // this function gets the status of selected task from TaskList Component

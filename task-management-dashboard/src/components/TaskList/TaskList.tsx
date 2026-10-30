@@ -23,9 +23,9 @@ export default function TaskList(props: TaskListProps) {
   let inProgressTasksArray: Task[] = [];
   let completedTasksArray: Task[] = [];
 
-  const [pendingTasks, setPendingTasks] = useState<Task[]>([]);
-  const [inProgressTasks, setInProgressTasks] = useState<Task[]>([]);
-  const [completedTasks, setCompletedTasks] = useState<Task[]>([]);
+  // const [pendingTasks, setPendingTasks] = useState<Task[]>([]);
+  // const [inProgressTasks, setInProgressTasks] = useState<Task[]>([]);
+  // const [completedTasks, setCompletedTasks] = useState<Task[]>([]);
 
   const visibleTasks = tasksArrayReceived.filter((task) => {
     console.log("current filters from TaskList: ", currentFilters);
@@ -45,20 +45,17 @@ export default function TaskList(props: TaskListProps) {
   visibleTasks.forEach((task) => {
     if (task.status === "pending") {
       pendingTasksArray.push(task);
-      // setPendingTasks(pendingTasksArray);
     } else if (task.status === "in-progress") {
       inProgressTasksArray.push(task);
-      // setInProgressTasks(inProgressTasks);
     } else if (task.status === "completed") {
       completedTasksArray.push(task);
-      // setCompletedTasks(completedTasksArray);
     }
   });
 
   return (
     <>
-      <div className="border-2 border-border-custom rounded-xl flex-1">
-        <h1> Pending </h1>
+      <div className="border-2 border-border-custom rounded-xl w-[30%] place-items-center">
+        <h1 className="bg-status-pending text-center"> Pending </h1>
         <div className="flex flex-col gap-4">
           {pendingTasksArray.map((task) => (
             <TaskItem
@@ -70,8 +67,8 @@ export default function TaskList(props: TaskListProps) {
           ))}
         </div>
       </div>
-      <div className="border-2 border-border-custom rounded-xl flex-1">
-        <h1> In Progress </h1>
+      <div className="border-2 border-border-custom rounded-xl w-[30%] place-items-center">
+        <h1 className="text-center"> In Progress </h1>
         <div className="flex flex-col gap-4">
           {inProgressTasksArray.map((task) => (
             <TaskItem
@@ -83,8 +80,8 @@ export default function TaskList(props: TaskListProps) {
           ))}
         </div>
       </div>
-      <div className="border-2 border-border-custom rounded-xl flex-1">
-        <h1> Completed </h1>
+      <div className="border-2 border-border-custom rounded-xl w-[30%] place-items-center">
+        <h1 className="text-center"> Completed </h1>
         <div className="flex flex-col gap-4">
           {completedTasksArray.map((task) => (
             <TaskItem

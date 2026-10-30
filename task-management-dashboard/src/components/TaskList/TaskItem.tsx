@@ -16,11 +16,14 @@ export default function TaskItem(props: TaskItemProps) {
   }
 
   return (
-    <div className="bg-slate-300 p-3 rounded-xl mt-5">
-      <div className="flex flex-rows">
-        <div className="flex flex-rows justify-start gap-100">
-          <h1> {props.task.title}</h1>
-          <div className="flex flex-rows justify-end gap-4">
+    <div className="bg-surface-card p-3 rounded-xl mt-5 w-[75%] mx-auto min-w-0">
+      <div className="flex flex-row flex-wrap justify-between items-center gap-3 min-w-0">
+        <div className="flex flex-row flex-wrap justify-start items-center gap-3 min-w-0">
+          <h1 className="text-txt-primary font-semibold text-lg break-words min-w-0">
+            {" "}
+            {props.task.title}
+          </h1>
+          <div className="flex flex-row flex-wrap justify-end items-center gap-4">
             <div>
               <select
                 value={currentStatus}
