@@ -1,6 +1,6 @@
 import { type TaskListProps } from "../../types";
 import TaskFilter from "../TaskFilter/TaskFilter";
-import TaskItem from "../TaskItem/TaskItem";
+import TaskItem from "./TaskItem";
 
 import { useState } from "react";
 
