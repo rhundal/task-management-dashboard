@@ -7,6 +7,7 @@ import { type TaskListProps } from "./types";
 import TaskList from "./components/TaskList/TaskList";
 
 import "./App.css";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 function App() {
   /*
@@ -110,13 +111,14 @@ function App() {
   }
 
   return (
-    <TaskList
-      tasks={tasks}
-      // this function gets the status of selected task from TaskList Component
-      onStatusChange={onStatusChangeFunction}
-      // this function gets the id of selected task to be deleted from TaskList Component
-      onDelete={onDeleteFunction}
-    />
+    // <TaskList
+    //   tasks={tasks}
+    //   // this function gets the status of selected task from TaskList Component
+    //   onStatusChange={onStatusChangeFunction}
+    //   // this function gets the id of selected task to be deleted from TaskList Component
+    //   onDelete={onDeleteFunction}
+    // />
+    <Dashboard />
   );
 }
 
