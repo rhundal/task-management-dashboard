@@ -1,7 +1,7 @@
 import { type TaskListProps } from "../../types";
 import TaskFilter from "../TaskFilter/TaskFilter";
 import TaskItem from "./TaskItem";
-
+import { type Task } from "../../types";
 import { useState } from "react";
 
 export default function TaskList(props: TaskListProps) {
@@ -15,9 +15,17 @@ export default function TaskList(props: TaskListProps) {
     status: "",
     priority: "",
   });
-  function onFilterChangeFunc(incomingFilters: any) {
-    setCurrentFilters(incomingFilters);
-  }
+  // function onFilterChangeFunc(incomingFilters: any) {
+  //   setCurrentFilters(incomingFilters);
+  // }
+
+  let pendingTasksArray: Task[] = [];
+  let inProgressTasksArray: Task[] = [];
+  let completedTasksArray: Task[] = [];
+
+  const [pendingTasks, setPendingTasks] = useState<Task[]>([]);
+  const [inProgressTasks, setInProgressTasks] = useState<Task[]>([]);
+  const [completedTasks, setCompletedTasks] = useState<Task[]>([]);
 
   const visibleTasks = tasksArrayReceived.filter((task) => {
     console.log("current filters from TaskList: ", currentFilters);
@@ -33,33 +41,59 @@ export default function TaskList(props: TaskListProps) {
     return true;
   });
 
+  // Categorize visible tasks
+  visibleTasks.forEach((task) => {
+    if (task.status === "pending") {
+      pendingTasksArray.push(task);
+      // setPendingTasks(pendingTasksArray);
+    } else if (task.status === "in-progress") {
+      inProgressTasksArray.push(task);
+      // setInProgressTasks(inProgressTasks);
+    } else if (task.status === "completed") {
+      completedTasksArray.push(task);
+      // setCompletedTasks(completedTasksArray);
+    }
+  });
+
   return (
     <>
-      <div className="bg-slate-200 flex justify-center items-center p-6 min-h-screen">
-        <div className="p-5 justify-start w-[50%] border-2 border-red-200 bg-white rounded-xl shadow-sm">
-          <div className="flex flex-row gap-10 border-b pb-3 mb-5 font-semibold text-gray-700">
-            <h1>Status</h1>
-            <div>Priority</div>
-          </div>
-
-          <div className="mt-5 flex flex-row gap-10 items-center">
-            {/* display TaskFilter here */}
-            <TaskFilter onFilterChange={onFilterChangeFunc} />
-          </div>
-
-          <div className="mt-10 flex flex-col gap-5">
-            <ul className="space-y-4">
-              {visibleTasks.map((task) => (
-                <li key={task.id}>
-                  <TaskItem
-                    task={task}
-                    onStatusChange={onStatusChange}
-                    onDelete={onDeleteFunc}
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
+      <div className="border-2 border-border-custom rounded-xl flex-1">
+        <h1> Pending </h1>
+        <div className="flex flex-col gap-4">
+          {pendingTasksArray.map((task) => (
+            <TaskItem
+              key={task.id}
+              task={task}
+              onStatusChange={onStatusChange}
+              onDelete={onDeleteFunc}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="border-2 border-border-custom rounded-xl flex-1">
+        <h1> In Progress </h1>
+        <div className="flex flex-col gap-4">
+          {inProgressTasksArray.map((task) => (
+            <TaskItem
+              key={task.id}
+              task={task}
+              onStatusChange={onStatusChange}
+              onDelete={onDeleteFunc}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="border-2 border-border-custom rounded-xl flex-1">
+        <h1> Completed </h1>
+        <div className="flex flex-col gap-4">
+          {completedTasksArray.map((task) => (
+            <TaskItem
+              key={task.id}
+              task={task}
+              onStatusChange={onStatusChange}
+              onDelete={onDeleteFunc}
+            />
+          ))}
         </div>
       </div>
     </>
