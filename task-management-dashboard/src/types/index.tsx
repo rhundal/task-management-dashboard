@@ -30,3 +30,19 @@ export interface TaskFilterProps {
     priority?: "low" | "medium" | "high";
   }) => void;
 }
+
+// New Interfaces introduced
+
+// Task data structure - previously Task
+
+
+
+
+// Component Props
+
+
+
+// Form Data
+
+
+// Filter Options

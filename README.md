@@ -23,6 +23,17 @@
 
 </details>
 
+<details>
+  <summary>Required Component Props</summary>
+
+- [x] TaskItemProps
+- [x] TaskListProps
+- [ ] TaskFormProps
+- [x] TaskFilterProps
+- [ ] DashboardProps
+
+</details>
+
 #### Type Definitions
 
 - [ ] Task data structure
@@ -30,6 +41,7 @@
 - [ ] TypeScript Interfaces
 - [ ] Form data
 - [ ] Filter options
+- [x] TaskStatus
 
 #### Application Features
 
