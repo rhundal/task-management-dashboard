@@ -114,18 +114,40 @@ export default function Dashboard() {
   return (
     <div className="bg-dashboard-bg w-full p-5 rounded-2xl">
       {" "}
-      <div className="flex flex-col md:flex-row justify-between border-3 border-border-custom">
+      <div className="flex flex-col md:flex-row border-3 justify-between border-border-custom">
         <div className="flex justify-center md:justify-start ml-15 p-5">
           {" "}
           <h1 className="text-txt-primary text-3xl font-semibold">
             OceanTides
           </h1>
         </div>
-        <div className="flex justify-center md:justify-end mr-15 p-5">
-          {" "}
-          <button className="text-surface-card bg-txt-primary py-3 px-7 rounded-xl shadow-xl">
-            + Add Task
-          </button>
+        <div className="flex justify-end">
+          <div className="flex flex-row">
+            <div className="p-5">
+              <input
+                type="text"
+                placeholder="Search by task ..."
+                className="bg-sidebar-active h-10 rounded-xl shadown-xl"
+              />
+            </div>
+            <div className="p-5">
+              <button className="text-surface-card bg-txt-primary py-3 px-7 rounded-xl shadow-xl">
+                Search
+              </button>
+            </div>
+          </div>
+          <div className="p-5">
+            {" "}
+            <button className="text-surface-card bg-txt-primary py-3 px-7 rounded-xl shadow-xl">
+              + Add Task
+            </button>
+          </div>
+          <div className="flex justify-center md:justify-end mr-15 p-5">
+            {" "}
+            <button className="text-surface-card bg-txt-primary py-3 px-7 rounded-xl shadow-xl">
+              Sort By Due Date
+            </button>
+          </div>
         </div>
       </div>
       <div className="p-5 flex flex-col md:flex-row gap-5 w-full border-3 border-border-custom overflow-hidden">

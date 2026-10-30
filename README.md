@@ -49,9 +49,9 @@
 - [x] filter tasks by status [Pending, In Progress, Completed]
 - [ ] show different visual states based on task properties
 - [x] a delete Button to delete the task
-- [ ] a button that adds a new task to the task list (This will require adding some type of form for the user to input the task details) - ![TaskList](https://img.shields.io/badge/TaskList-Component-F01272?style=for-the-badge)
-- [ ] a button that sorts the tasks by due date - ![TaskList](https://img.shields.io/badge/TaskList-Component-F01272?style=for-the-badge)
-- [ ] a search bar to search for tasks - ![TaskList](https://img.shields.io/badge/TaskList-Component-F01272?style=for-the-badge)
+- [x] a button that adds a new task to the task list (This will require adding some type of form for the user to input the task details) - ![TaskList](https://img.shields.io/badge/TaskList-Component-F01272?style=for-the-badge)
+- [x] a button that sorts the tasks by due date - ![TaskList](https://img.shields.io/badge/TaskList-Component-F01272?style=for-the-badge)
+- [x] a search bar to search for tasks - ![TaskList](https://img.shields.io/badge/TaskList-Component-F01272?style=for-the-badge)
 - [ ] buttons to the TaskItem component that allow the user to move the task up and down the list
 - [ ] a controlled form for adding/editing tasks - ![TaskForm](https://img.shields.io/badge/TaskForm-Component-168BFA?style=for-the-badge)
 - [ ] implement form validation - ![TaskForm](https://img.shields.io/badge/TaskForm-Component-168BFA?style=for-the-badge)

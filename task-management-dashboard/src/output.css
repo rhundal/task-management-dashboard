@@ -42,6 +42,8 @@
     --color-surface-card: #ffffff;
     --color-txt-primary: #244C70;
     --color-sidebar-bg: #EAF1F8;
+    --color-txt-sidebar: #55779A;
+    --color-sidebar-active: #D6E7F5;
     --color-status-pending: #F4E5CB;
     --color-priority-med: #F7D9A6;
   }
@@ -239,6 +241,15 @@
   }
   .table {
     display: table;
+  }
+  .h-10 {
+    height: calc(var(--spacing) * 10);
+  }
+  .h-12 {
+    height: calc(var(--spacing) * 12);
+  }
+  .h-20 {
+    height: calc(var(--spacing) * 20);
   }
   .min-h-screen {
     min-height: 100vh;
@@ -452,6 +463,9 @@
   .bg-green-300 {
     background-color: var(--color-green-300);
   }
+  .bg-sidebar-active {
+    background-color: var(--color-sidebar-active);
+  }
   .bg-sidebar-bg {
     background-color: var(--color-sidebar-bg);
   }
@@ -472,6 +486,9 @@
   }
   .bg-txt-primary {
     background-color: var(--color-txt-primary);
+  }
+  .bg-txt-sidebar {
+    background-color: var(--color-txt-sidebar);
   }
   .bg-white {
     background-color: var(--color-white);
