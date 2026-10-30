@@ -1,6 +1,6 @@
 ### Project Objective
 
-> Build a Task Management Dashboard
+> Build a Task Management Dashboard.
 > This project tests understanding of React components, state management, TypeScript integration, form handling, and
 > component composition.
 
@@ -30,6 +30,8 @@
 - [ ] TypeScript Interfaces
 - [ ] Form data
 - [ ] Filter options
+
+#### Application Workflow
 
 #### Reflection
 
