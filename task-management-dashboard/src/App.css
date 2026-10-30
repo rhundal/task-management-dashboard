@@ -1,0 +1,18 @@
+:root {
+
+    --dashboard-bg: #F7F9FA;
+    --border: #DCE8F3;
+    --surfaceCard: #ffffff;
+    --txtPrimary: #244C70;
+    --txtSecondary: #6B7C93;
+    --txtMuted: #a3b1c6;
+    --sidebar-bg: #EAF1F8;
+    --txtSidebar: #55779A;
+    --sidebar-active: #D6E7F5;
+    --statusPending: #F4E5CB;
+    --statusInProgress: #91BBD0;
+    --statusCompleted: #A7CBB7;
+    --priorityLow: #CFE9DB;
+    --priorityMed: #F7D9A6;
+    --priorityHig: #F6C1C7;
+}
