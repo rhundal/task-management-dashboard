@@ -11,9 +11,6 @@ export default function Dashboard() {
     status: "",
     priority: "",
   });
-  function onFilterChangeFunc(incomingFilters: any) {
-    setCurrentFilters(incomingFilters);
-  }
 
   let tasksArray: Task[] = [
     {
@@ -107,6 +104,39 @@ export default function Dashboard() {
   function onDeleteFunction(taskId: string) {
     let arrayAfterDeletion = tasks.filter((task) => task.id !== taskId);
     setTasks(arrayAfterDeletion);
+  }
+
+  // This function attempts to update tasks displayed on dashboard based on filters selected
+  function onFilterChangeFunc(incomingFilters: any) {
+    setCurrentFilters(incomingFilters);
+    // unpack currentFilters
+    // update tasks with it
+
+    const { status: selectedStatus, priority: selectedPriotiy } =
+      incomingFilters;
+
+    let selectedTasks: Task[] = [];
+    selectedTasks = tasks;
+
+    if (selectedStatus && selectedPriotiy) {
+      selectedTasks = tasksArray.filter(
+        (task) =>
+          task.status === selectedStatus && task.priority === selectedPriotiy,
+      );
+    } else if (selectedPriotiy) {
+      selectedTasks = tasksArray.filter(
+        (task) => task.priority === selectedPriotiy,
+      );
+    } else if (selectedStatus) {
+      selectedTasks = tasksArray.filter(
+        (task) => task.status === selectedStatus,
+      );
+    } else {
+      selectedTasks = tasksArray;
+    }
+
+    if (!selectedTasks) return;
+    setTasks(selectedTasks);
   }
 
   //   let tasksArrayReceived = tasksArray;
