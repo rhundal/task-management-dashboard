@@ -117,14 +117,19 @@ export default function Dashboard() {
       searchString: userInput,
     } = incomingFilters;
 
-    const selectedTasks: Task[] = tasksArray.filter(
-      (task) =>
-        (!selectedStatus || task.status === selectedStatus) &&
-        (!selectedPriority || task.priority === selectedPriority) &&
-        (!userInput ||
-          task.description.toLowerCase().includes(userInput.toLowerCase()) ||
-          task.title.toLowerCase().includes(userInput.toLowerCase())),
-    );
+    let selectedTasks: Task[] = tasksArray;
+    setTasks(selectedTasks);
+
+    if (currentFilters !== incomingFilters) {
+      selectedTasks = tasksArray.filter(
+        (task) =>
+          (!selectedStatus || task.status === selectedStatus) &&
+          (!selectedPriority || task.priority === selectedPriority) &&
+          (!userInput ||
+            task.description.toLowerCase().includes(userInput.toLowerCase()) ||
+            task.title.toLowerCase().includes(userInput.toLowerCase())),
+      );
+    }
 
     setTasks(selectedTasks);
   }
