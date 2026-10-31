@@ -110,7 +110,7 @@ export default function Dashboard() {
     let selectedTasks: Task[] = tasksArray;
     setTasks(selectedTasks);
 
-    selectedTasks = tasksArray.filter(
+    selectedTasks = selectedTasks.filter(
       (task) =>
         (!selectedStatus || task.status === selectedStatus) &&
         (!selectedPriority || task.priority === selectedPriority) &&
