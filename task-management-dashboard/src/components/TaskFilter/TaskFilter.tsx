@@ -103,14 +103,14 @@ export default function TaskFilter(props: TaskFilterProps) {
             className="bg-sidebar-active h-10 rounded-xl shadown-xl"
           />
         </div>
-        <div className="p-5">
+        {/* <div className="p-5">
           <button
             onClick={submitSearch}
             className="text-surface-card bg-txt-primary py-3 px-7 rounded-xl shadow-xl"
           >
             Search
           </button>
-        </div>
+        </div> */}
       </div>
     </>
   );
