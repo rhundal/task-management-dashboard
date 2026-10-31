@@ -10,6 +10,7 @@ export default function Dashboard() {
   const [currentFilters, setCurrentFilters] = useState({
     status: "",
     priority: "",
+    searchString: "",
   });
 
   let tasksArray: Task[] = [
@@ -112,34 +113,51 @@ export default function Dashboard() {
     // unpack currentFilters
     // update tasks with it
 
-    const { status: selectedStatus, priority: selectedPriotiy } =
-      incomingFilters;
+    const {
+      status: selectedStatus,
+      priority: selectedPriotiy,
+      searchString: userInput,
+    } = incomingFilters;
 
-    let selectedTasks: Task[] = [];
-    selectedTasks = tasks;
+    let selectedTasks: Task[] = tasksArray;
 
-    if (selectedStatus && selectedPriotiy) {
+    if (selectedStatus && selectedPriotiy && userInput) {
       selectedTasks = tasksArray.filter(
         (task) =>
-          task.status === selectedStatus && task.priority === selectedPriotiy,
+          (task.status === selectedStatus &&
+            task.priority === selectedPriotiy &&
+            task.description.toLowerCase().includes(userInput)) ||
+          task.title.toLowerCase().includes(userInput),
       );
-    } else if (selectedPriotiy) {
+    } else if (selectedPriotiy && userInput) {
       selectedTasks = tasksArray.filter(
-        (task) => task.priority === selectedPriotiy,
+        (task) =>
+          (task.priority === selectedPriotiy &&
+            task.description.toLowerCase().includes(userInput)) ||
+          task.title.toLowerCase().includes(userInput),
       );
     } else if (selectedStatus) {
       selectedTasks = tasksArray.filter(
-        (task) => task.status === selectedStatus,
+        (task) =>
+          (task.status === selectedStatus &&
+            task.description.toLowerCase().includes(userInput)) ||
+          task.title.toLowerCase().includes(userInput),
+      );
+    } else if (userInput) {
+      selectedTasks = selectedTasks.filter(
+        (task) =>
+          task.description.toLowerCase().includes(userInput) ||
+          task.title.toLowerCase().includes(userInput),
       );
     } else {
       selectedTasks = tasksArray;
     }
 
+    setTasks(selectedTasks);
+
     if (!selectedTasks) return;
     setTasks(selectedTasks);
   }
-
-  //   let tasksArrayReceived = tasksArray;
 
   return (
     <div className="bg-dashboard-bg w-full p-5 rounded-2xl">
@@ -152,20 +170,6 @@ export default function Dashboard() {
           </h1>
         </div>
         <div className="flex justify-end">
-          <div className="flex flex-row">
-            <div className="p-5">
-              <input
-                type="text"
-                placeholder="Search by task ..."
-                className="bg-sidebar-active h-10 rounded-xl shadown-xl"
-              />
-            </div>
-            <div className="p-5">
-              <button className="text-surface-card bg-txt-primary py-3 px-7 rounded-xl shadow-xl">
-                Search
-              </button>
-            </div>
-          </div>
           <div className="p-5">
             {" "}
             <button className="text-surface-card bg-txt-primary py-3 px-7 rounded-xl shadow-xl">

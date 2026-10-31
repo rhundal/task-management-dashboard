@@ -26,6 +26,19 @@ export default function TaskFilter(props: TaskFilterProps) {
 
   const [currentStatus, setCurrentStatus] = useState<TaskStatus>("pending");
   const [currentPriority, setCurrentPriority] = useState<string>("");
+  const [currentSearchString, setCurrentSearchString] = useState<String>("");
+
+  function handleSearchInput(e: React.ChangeEvent<HTMLInputElement>) {
+    const userInput = e.target.value;
+    setCurrentSearchString(userInput);
+
+    props.onFilterChange({
+      status: currentStatus,
+      priority: currentPriority as any,
+      searchString: userInput || "", // Convert empty string ("All Statuses") to undefined
+    });
+  }
+  function submitSearch(e: React.MouseEvent<HTMLButtonElement>) {}
 
   function handleStatusChange(e: React.ChangeEvent<HTMLSelectElement>) {
     const newStatus = e.target.value as TaskStatus;
@@ -80,6 +93,24 @@ export default function TaskFilter(props: TaskFilterProps) {
             </option>
           ))}
         </select>
+      </div>
+      <div className="flex flex-row">
+        <div className="p-5">
+          <input
+            type="text"
+            onChange={handleSearchInput}
+            placeholder="Search by task ..."
+            className="bg-sidebar-active h-10 rounded-xl shadown-xl"
+          />
+        </div>
+        <div className="p-5">
+          <button
+            onClick={submitSearch}
+            className="text-surface-card bg-txt-primary py-3 px-7 rounded-xl shadow-xl"
+          >
+            Search
+          </button>
+        </div>
       </div>
     </>
   );

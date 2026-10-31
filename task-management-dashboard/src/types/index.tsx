@@ -28,6 +28,7 @@ export interface TaskFilterProps {
   onFilterChange: (filters: {
     status?: TaskStatus;
     priority?: "low" | "medium" | "high";
+    searchString?: string;
   }) => void;
 }
 
@@ -35,14 +36,8 @@ export interface TaskFilterProps {
 
 // Task data structure - previously Task
 
-
-
-
 // Component Props
 
-
-
 // Form Data
-
 
 // Filter Options
