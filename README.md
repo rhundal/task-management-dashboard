@@ -111,3 +111,10 @@
 > - Implement data export/import
 > - Support for light and dark mode
 > - Add Animations or transitions
+
+#### How To Run My Project
+
+- cd task-management-dashboard
+- npm install
+- npx @tailwindcss/cli -i ./src/App.css -o ./src/output.css --watch
+- npm run dev
