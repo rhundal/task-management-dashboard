@@ -11,10 +11,11 @@ export default function TaskList(props: TaskListProps) {
   let onStatusChange = props.onStatusChange;
   let onDeleteFunc = props.onDelete;
 
-  const [currentFilters, setCurrentFilters] = useState({
+  let currentFilters = {
     status: "",
     priority: "",
-  });
+    searchString: "",
+  };
   // function onFilterChangeFunc(incomingFilters: any) {
   //   setCurrentFilters(incomingFilters);
   // }
@@ -23,13 +24,7 @@ export default function TaskList(props: TaskListProps) {
   let inProgressTasksArray: Task[] = [];
   let completedTasksArray: Task[] = [];
 
-  // const [pendingTasks, setPendingTasks] = useState<Task[]>([]);
-  // const [inProgressTasks, setInProgressTasks] = useState<Task[]>([]);
-  // const [completedTasks, setCompletedTasks] = useState<Task[]>([]);
-
   const visibleTasks = tasksArrayReceived.filter((task) => {
-    console.log("current filters from TaskList: ", currentFilters);
-
     if (currentFilters.status && task.status !== currentFilters.status) {
       return false;
     }

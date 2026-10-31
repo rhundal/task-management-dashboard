@@ -6,7 +6,7 @@ export default function TaskFilter(props: TaskFilterProps) {
   const initialStatuses = ["pending", "in-progress", "completed"];
   const initialPriorities = ["low", "medium", "high"];
 
-  const [currentStatus, setCurrentStatus] = useState<TaskStatus>("pending");
+  const [currentStatus, setCurrentStatus] = useState<TaskStatus>("");
   const [currentPriority, setCurrentPriority] = useState<string>("");
 
   function handleSearchInput(e: React.ChangeEvent<HTMLInputElement>) {

@@ -7,12 +7,6 @@ import { type TaskStatus } from "../../types";
 import TaskFilter from "../TaskFilter/TaskFilter";
 
 export default function Dashboard() {
-  const [currentFilters, setCurrentFilters] = useState({
-    status: "",
-    priority: "",
-    searchString: "",
-  });
-
   let tasksArray: Task[] = [
     {
       id: "1",
@@ -88,13 +82,13 @@ export default function Dashboard() {
     },
   ];
 
+  const [filterApplied, setFilterApplied] = useState(false);
+
   const [tasks, setTasks] = useState<Task[]>(tasksArray);
 
   function onStatusChangeFunction(taskId: string, newStatus: TaskStatus) {
-    // setTasks(tasksArray);
     let selectedTask = tasks.find((task) => task.id === taskId);
     if (!selectedTask) return;
-
     setTasks(
       tasks.map((task) =>
         task === selectedTask ? { ...task, status: newStatus } : task,
@@ -109,29 +103,28 @@ export default function Dashboard() {
 
   // This function attempts to update tasks displayed on dashboard based on filters selected
   function onFilterChangeFunc(incomingFilters: any) {
-    setCurrentFilters(incomingFilters);
-
     const {
       status: selectedStatus,
       priority: selectedPriority,
       searchString: userInput,
     } = incomingFilters;
 
+    // let selectedStatus = !filterApplied ? "" : status;
+
     let selectedTasks: Task[] = tasksArray;
     setTasks(selectedTasks);
 
-    if (currentFilters !== incomingFilters) {
-      selectedTasks = tasksArray.filter(
-        (task) =>
-          (!selectedStatus || task.status === selectedStatus) &&
-          (!selectedPriority || task.priority === selectedPriority) &&
-          (!userInput ||
-            task.description.toLowerCase().includes(userInput.toLowerCase()) ||
-            task.title.toLowerCase().includes(userInput.toLowerCase())),
-      );
-    }
+    selectedTasks = tasksArray.filter(
+      (task) =>
+        (!selectedStatus || task.status === selectedStatus) &&
+        (!selectedPriority || task.priority === selectedPriority) &&
+        (!userInput ||
+          task.description.toLowerCase().includes(userInput.toLowerCase()) ||
+          task.title.toLowerCase().includes(userInput.toLowerCase())),
+    );
 
     setTasks(selectedTasks);
+    setFilterApplied(true);
   }
 
   return (
