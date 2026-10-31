@@ -38,7 +38,7 @@ export default function TaskFilter(props: TaskFilterProps) {
       searchString: userInput || "", // Convert empty string ("All Statuses") to undefined
     });
   }
-  function submitSearch(e: React.MouseEvent<HTMLButtonElement>) {}
+  // function submitSearch(e: React.MouseEvent<HTMLButtonElement>) {}
 
   function handleStatusChange(e: React.ChangeEvent<HTMLSelectElement>) {
     const newStatus = e.target.value as TaskStatus;
@@ -48,6 +48,7 @@ export default function TaskFilter(props: TaskFilterProps) {
     props.onFilterChange({
       status: newStatus || undefined, // Convert empty string ("All Statuses") to undefined
       priority: currentPriority as any,
+      searchString: "",
     });
   }
 
@@ -60,6 +61,7 @@ export default function TaskFilter(props: TaskFilterProps) {
     props.onFilterChange({
       status: currentStatus,
       priority: (newPriority || undefined) as any, // Cast to match parent's expected union
+      searchString: "",
     });
   }
   return (

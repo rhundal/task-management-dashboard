@@ -110,52 +110,22 @@ export default function Dashboard() {
   // This function attempts to update tasks displayed on dashboard based on filters selected
   function onFilterChangeFunc(incomingFilters: any) {
     setCurrentFilters(incomingFilters);
-    // unpack currentFilters
-    // update tasks with it
 
     const {
       status: selectedStatus,
-      priority: selectedPriotiy,
+      priority: selectedPriority,
       searchString: userInput,
     } = incomingFilters;
 
-    let selectedTasks: Task[] = tasksArray;
+    const selectedTasks: Task[] = tasksArray.filter(
+      (task) =>
+        (!selectedStatus || task.status === selectedStatus) &&
+        (!selectedPriority || task.priority === selectedPriority) &&
+        (!userInput ||
+          task.description.toLowerCase().includes(userInput.toLowerCase()) ||
+          task.title.toLowerCase().includes(userInput.toLowerCase())),
+    );
 
-    if (selectedStatus && selectedPriotiy && userInput) {
-      selectedTasks = tasksArray.filter(
-        (task) =>
-          (task.status === selectedStatus &&
-            task.priority === selectedPriotiy &&
-            task.description.toLowerCase().includes(userInput)) ||
-          task.title.toLowerCase().includes(userInput),
-      );
-    } else if (selectedPriotiy && userInput) {
-      selectedTasks = tasksArray.filter(
-        (task) =>
-          (task.priority === selectedPriotiy &&
-            task.description.toLowerCase().includes(userInput)) ||
-          task.title.toLowerCase().includes(userInput),
-      );
-    } else if (selectedStatus) {
-      selectedTasks = tasksArray.filter(
-        (task) =>
-          (task.status === selectedStatus &&
-            task.description.toLowerCase().includes(userInput)) ||
-          task.title.toLowerCase().includes(userInput),
-      );
-    } else if (userInput) {
-      selectedTasks = selectedTasks.filter(
-        (task) =>
-          task.description.toLowerCase().includes(userInput) ||
-          task.title.toLowerCase().includes(userInput),
-      );
-    } else {
-      selectedTasks = tasksArray;
-    }
-
-    setTasks(selectedTasks);
-
-    if (!selectedTasks) return;
     setTasks(selectedTasks);
   }
 
