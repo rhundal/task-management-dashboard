@@ -1,8 +1,8 @@
 import { type TaskListProps } from "../../types";
-import TaskFilter from "../TaskFilter/TaskFilter";
+// import TaskFilter from "../TaskFilter/TaskFilter";
 import TaskItem from "./TaskItem";
 import { type Task } from "../../types";
-import { useState } from "react";
+// import { useState } from "react";
 
 export default function TaskList(props: TaskListProps) {
   let tasksArrayReceived = props.tasks;

@@ -82,8 +82,6 @@ export default function Dashboard() {
     },
   ];
 
-  const [filterApplied, setFilterApplied] = useState(false);
-
   const [tasks, setTasks] = useState<Task[]>(tasksArray);
 
   function onStatusChangeFunction(taskId: string, newStatus: TaskStatus) {
@@ -109,8 +107,6 @@ export default function Dashboard() {
       searchString: userInput,
     } = incomingFilters;
 
-    // let selectedStatus = !filterApplied ? "" : status;
-
     let selectedTasks: Task[] = tasksArray;
     setTasks(selectedTasks);
 
@@ -124,7 +120,6 @@ export default function Dashboard() {
     );
 
     setTasks(selectedTasks);
-    setFilterApplied(true);
   }
 
   return (

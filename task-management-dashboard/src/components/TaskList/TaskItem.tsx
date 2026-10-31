@@ -10,8 +10,8 @@ export default function TaskItem(props: TaskItemProps) {
     setCurrentStatus(newStatus);
     props.onStatusChange(props.task.id, newStatus);
   }
-
-  function handleDeleteFunction(e: React.MouseEvent<HTMLButtonElement>) {
+  // e: React.MouseEvent<HTMLButtonElement>
+  function handleDeleteFunction() {
     props.onDelete(props.task.id);
   }
 
