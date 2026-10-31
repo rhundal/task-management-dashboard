@@ -1,41 +1,21 @@
 import { type TaskFilterProps } from "../../types";
 import { type TaskStatus } from "../../types";
 import { useState } from "react";
-/*
-// types/index.ts
-export interface TaskFilterProps {
-  onFilterChange: (filters: {
-    status?: TaskStatus;
-    priority?: 'low' | 'medium' | 'high';
-  }) => void;
-}
-  */
 
 export default function TaskFilter(props: TaskFilterProps) {
-  const [currentStatuses, setCurrentStatuses] = useState<TaskStatus[]>([
-    "pending",
-    "in-progress",
-    "completed",
-  ]);
-
-  const [currentPriorities, setCurrentPriorities] = useState([
-    "low",
-    "medium",
-    "high",
-  ]);
+  const initialStatuses = ["pending", "in-progress", "completed"];
+  const initialPriorities = ["low", "medium", "high"];
 
   const [currentStatus, setCurrentStatus] = useState<TaskStatus>("pending");
   const [currentPriority, setCurrentPriority] = useState<string>("");
-  const [currentSearchString, setCurrentSearchString] = useState<String>("");
 
   function handleSearchInput(e: React.ChangeEvent<HTMLInputElement>) {
     const userInput = e.target.value;
-    setCurrentSearchString(userInput);
 
     props.onFilterChange({
       status: currentStatus,
       priority: currentPriority as any,
-      searchString: userInput || "", // Convert empty string ("All Statuses") to undefined
+      searchString: userInput, // Convert empty string ("All Statuses") to undefined
     });
   }
   // function submitSearch(e: React.MouseEvent<HTMLButtonElement>) {}
@@ -48,7 +28,6 @@ export default function TaskFilter(props: TaskFilterProps) {
     props.onFilterChange({
       status: newStatus || undefined, // Convert empty string ("All Statuses") to undefined
       priority: currentPriority as any,
-      searchString: "",
     });
   }
 
@@ -61,7 +40,6 @@ export default function TaskFilter(props: TaskFilterProps) {
     props.onFilterChange({
       status: currentStatus,
       priority: (newPriority || undefined) as any, // Cast to match parent's expected union
-      searchString: "",
     });
   }
   return (
@@ -74,7 +52,7 @@ export default function TaskFilter(props: TaskFilterProps) {
           }}
         >
           <option value=""> All Statuses</option>
-          {currentStatuses.map((status) => (
+          {initialStatuses.map((status) => (
             <option key={status} value={status}>
               {status}
             </option>
@@ -89,7 +67,7 @@ export default function TaskFilter(props: TaskFilterProps) {
           }}
         >
           <option value=""> All Priorities</option>
-          {currentPriorities.map((priority) => (
+          {initialPriorities.map((priority) => (
             <option key={priority} value={priority}>
               {priority}
             </option>
