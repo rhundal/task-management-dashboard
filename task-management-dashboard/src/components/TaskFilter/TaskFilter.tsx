@@ -18,7 +18,7 @@ export default function TaskFilter(props: TaskFilterProps) {
       searchString: userInput, // Convert empty string ("All Statuses") to undefined
     });
   }
-  // function submitSearch(e: React.MouseEvent<HTMLButtonElement>) {}
+  function clearFilters(e: React.MouseEvent<HTMLButtonElement>) {}
 
   function handleStatusChange(e: React.ChangeEvent<HTMLSelectElement>) {
     const newStatus = e.target.value as TaskStatus;
@@ -44,7 +44,7 @@ export default function TaskFilter(props: TaskFilterProps) {
   }
   return (
     <>
-      <div>
+      <div className="flex flex-col md:flex-row gap-4">
         <select
           className="rounded-lg border border-gray-300 px-3 py-2 bg-white text-black"
           onChange={(e) => {
@@ -58,24 +58,32 @@ export default function TaskFilter(props: TaskFilterProps) {
             </option>
           ))}
         </select>
+        <div>
+          <select
+            className="rounded-lg border border-gray-300 px-3 py-2 bg-white text-black"
+            onChange={(e) => {
+              handlePriorityChange(e);
+            }}
+          >
+            <option value=""> All Priorities</option>
+            {initialPriorities.map((priority) => (
+              <option key={priority} value={priority}>
+                {priority}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
-      <div>
-        <select
-          className="rounded-lg border border-gray-300 px-3 py-2 bg-white text-black"
-          onChange={(e) => {
-            handlePriorityChange(e);
-          }}
+      <div className="mt-5">
+        <button
+          onClick={clearFilters}
+          className="text-surface-card bg-txt-primary py-2 px-7 rounded-xl shadow-xl"
         >
-          <option value=""> All Priorities</option>
-          {initialPriorities.map((priority) => (
-            <option key={priority} value={priority}>
-              {priority}
-            </option>
-          ))}
-        </select>
+          Clear Filters
+        </button>
       </div>
       <div className="flex flex-row">
-        <div className="p-5">
+        <div className="mt-5">
           <input
             type="text"
             onChange={handleSearchInput}
@@ -83,14 +91,6 @@ export default function TaskFilter(props: TaskFilterProps) {
             className="bg-sidebar-active h-10 rounded-xl shadown-xl"
           />
         </div>
-        {/* <div className="p-5">
-          <button
-            onClick={submitSearch}
-            className="text-surface-card bg-txt-primary py-3 px-7 rounded-xl shadow-xl"
-          >
-            Search
-          </button>
-        </div> */}
       </div>
     </>
   );
