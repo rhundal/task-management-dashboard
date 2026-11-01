@@ -18,7 +18,15 @@ export default function TaskFilter(props: TaskFilterProps) {
       searchString: userInput, // Convert empty string ("All Statuses") to undefined
     });
   }
-  function clearFilters(e: React.MouseEvent<HTMLButtonElement>) {}
+  function clearFilters() {
+    setCurrentStatus("");
+    setCurrentPriority("");
+    props.onFilterChange({
+      status: "",
+      priority: "",
+      searchString: "", // Convert empty string ("All Statuses") to undefined
+    });
+  }
 
   function handleStatusChange(e: React.ChangeEvent<HTMLSelectElement>) {
     const newStatus = e.target.value as TaskStatus;
@@ -46,6 +54,7 @@ export default function TaskFilter(props: TaskFilterProps) {
     <>
       <div className="flex flex-col md:flex-row gap-4">
         <select
+          value={currentStatus}
           className="rounded-lg border border-gray-300 px-3 py-2 bg-white text-black"
           onChange={(e) => {
             handleStatusChange(e);
@@ -64,6 +73,7 @@ export default function TaskFilter(props: TaskFilterProps) {
             onChange={(e) => {
               handlePriorityChange(e);
             }}
+            value={currentPriority}
           >
             <option value=""> All Priorities</option>
             {initialPriorities.map((priority) => (
