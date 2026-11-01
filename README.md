@@ -88,7 +88,7 @@
 - Your approach to component composition and state management
   - I wasnt able to complete all the tasks but for the ones I did, I made small reusable components which I put together or nest as needed to create the entire dashboard.
 
-#### Implementation Steps In Order
+#### Implementation Steps In Order (What is done)
 
 > Start with implmenting Dashboard Component
 >
@@ -96,14 +96,15 @@
 > - Design UI in Dashboard Component
 > - Ensure basic functionalities from lab 9.3 are working
 > - Add Search functionality to search tasks by title or description in left sidebar
+> - Add `Clear filters` button
 
 #### What is pending
 
 > Features Pending (Working on them..)
 >
 > - Add Task
-> - Move Tasks up and down by arrow
-> - Drag and Drop Tasks between lanes
+> - Move Tasks up and down by arrow within status
+> - Drag and Drop Tasks between lanes (across status)
 > - Fix and properly show all visual states for tasks
 > - Add localstorage integration
 > - Implement data export/import
