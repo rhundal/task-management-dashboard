@@ -32,12 +32,15 @@ export interface TaskFilterProps {
   }) => void;
 }
 
-// New Interfaces introduced
-
 // Task data structure - previously Task
 
-// Component Props
+// Component Props - previously used ones
 
-// Form Data
+// Filter Options - previously used ones
 
-// Filter Options
+// New Interfaces introduced
+
+export interface FormDataProps {
+
+  
+}

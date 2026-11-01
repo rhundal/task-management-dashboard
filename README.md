@@ -77,7 +77,14 @@
   - [x] pass the theme state down to the components that need it
 - [ ] add animations and/or transitions for state changes - ![Enhanced UI](https://img.shields.io/badge/Enhanced-UI-D946C1?style=for-the-badge)
 
-#### Application Workflow
+#### Application Workflow [need to add a diagram here]
+
+1. TaskList Component - responsible for list rendering, task status updates, search, task addition, task deletion, sorting
+2. TaskForm Component - controlled form for adding and editing tasks, form submission, show validation feedback
+3. TaskFilter Component - responsible for updating ui based on filtering status and priority, search, and showing active filter indicators
+4. Dashboard Component - tie all components together to display a responsive ui, show statistics, and handle component communication
+5. Utility Functions - responsible for task filtering logic, sorting functions, creative validation helpers, date formatting helpers
+6. Data Persistence - responsible for adding and integrating localstorage, implementing data export/import
 
 #### Reflection
 

@@ -91,3 +91,13 @@ export default function TaskList(props: TaskListProps) {
     </>
   );
 }
+
+/*
+Implement task addition - this component will have a task addition button which will call or open the task form component
+Implement task deletion - this component will have a task deletion button which will call or open the task form component
+Implement task sorting - this component will have a task sorting button which will call or open the sorting  utility funcitons
+
+
+
+
+*/

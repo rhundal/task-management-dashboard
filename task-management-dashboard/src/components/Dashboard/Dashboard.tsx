@@ -1,5 +1,5 @@
 import TaskList from "../TaskList/TaskList";
-
+import TaskForm from "../TaskForm/TaskForm";
 import { useState } from "react";
 import { type Task } from "../../types";
 import { type TaskStatus } from "../../types";
@@ -84,6 +84,8 @@ export default function Dashboard() {
 
   const [tasks, setTasks] = useState<Task[]>(tasksArray);
 
+  const [addTask, setAddTask] = useState(false);
+
   function onStatusChangeFunction(taskId: string, newStatus: TaskStatus) {
     let selectedTask = tasks.find((task) => task.id === taskId);
     if (!selectedTask) return;
@@ -97,6 +99,10 @@ export default function Dashboard() {
   function onDeleteFunction(taskId: string) {
     let arrayAfterDeletion = tasks.filter((task) => task.id !== taskId);
     setTasks(arrayAfterDeletion);
+  }
+
+  function handleAddTask() {
+    !addTask ? setAddTask(true) : setAddTask(false);
   }
 
   // This function attempts to update tasks displayed on dashboard based on filters selected
@@ -135,7 +141,10 @@ export default function Dashboard() {
         <div className="flex justify-end">
           <div className="p-5">
             {" "}
-            <button className="text-surface-card bg-txt-primary py-3 px-7 rounded-xl shadow-xl">
+            <button
+              onClick={handleAddTask}
+              className="text-surface-card bg-txt-primary py-3 px-7 rounded-xl shadow-xl"
+            >
               + Add Task
             </button>
           </div>
@@ -152,16 +161,27 @@ export default function Dashboard() {
           <h1 className="text-txt-primary text-lg font-semibold">Status</h1>
           <TaskFilter onFilterChange={onFilterChangeFunc} />
         </div>
-        <div className="bg-dashboard-bg flex md:flex-[5] gap-5 min-w-0 mx-auto justify-center">
-          <TaskList
-            tasks={tasks}
-            // this function gets the status of selected task from TaskList Component
-            onStatusChange={onStatusChangeFunction}
-            // this function gets the id of selected task to be deleted from TaskList Component
-            onDelete={onDeleteFunction}
-          />
+        <div className="relative flex">
+          {addTask && (
+            <div className="absolute inset-0 z-50 bg-dashboard-bg/80 backdrop-blur-sm flex item-start justify-center">
+              <TaskForm />
+            </div>
+          )}
+          <div className="bg-dashboard-bg flex md:flex-[5] gap-5 min-w-0 mx-auto justify-center">
+            <TaskList
+              tasks={tasks}
+              // this function gets the status of selected task from TaskList Component
+              onStatusChange={onStatusChangeFunction}
+              // this function gets the id of selected task to be deleted from TaskList Component
+              onDelete={onDeleteFunction}
+            />
+          </div>
         </div>
       </div>
     </div>
   );
 }
+
+/*
+- Move Task filtering logic to utility function
+*/
