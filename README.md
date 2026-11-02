@@ -28,7 +28,7 @@
 
 - [x] TaskItemProps
 - [x] TaskListProps
-- [ ] TaskFormProps
+- [x] TaskFormProps
 - [x] TaskFilterProps
 - [x] DashboardProps
 
@@ -39,7 +39,7 @@
 - [x] Task data structure
 - [x] Component props
 - [x] TypeScript Interfaces
-- [ ] Form data
+- [x] Form data
 - [x] Filter options
 - [x] TaskStatus
 
@@ -55,11 +55,11 @@
 - [ ] buttons to the TaskItem component that allow the user to move the task up and down the list
 - [ ] a controlled form for adding/editing tasks - ![TaskForm](https://img.shields.io/badge/TaskForm-Component-168BFA?style=for-the-badge)
 - [ ] implement form validation - ![TaskForm](https://img.shields.io/badge/TaskForm-Component-168BFA?style=for-the-badge)
-- [ ] handle form submission - ![TaskForm](https://img.shields.io/badge/TaskForm-Component-168BFA?style=for-the-badge)
+- [x] handle form submission - ![TaskForm](https://img.shields.io/badge/TaskForm-Component-168BFA?style=for-the-badge)
 - [ ] show validation feedback - ![TaskForm](https://img.shields.io/badge/TaskForm-Component-168BFA?style=for-the-badge)
-- [ ] implement filtering by status and priority - ![TaskFilter](https://img.shields.io/badge/TaskFilter-Component-00A878?style=for-the-badge)
+- [x] implement filtering by status and priority - ![TaskFilter](https://img.shields.io/badge/TaskFilter-Component-00A878?style=for-the-badge)
 - [x] add search functionality - ![TaskFilter](https://img.shields.io/badge/TaskFilter-Component-00A878?style=for-the-badge)
-- [ ] show active filter indicators - ![TaskFilter](https://img.shields.io/badge/TaskFilter-Component-00A878?style=for-the-badge)
+- [x] show active filter indicators - ![TaskFilter](https://img.shields.io/badge/TaskFilter-Component-00A878?style=for-the-badge)
 - [x] compose all components into a cohesive dashboard - ![Dashboard](https://img.shields.io/badge/Dashboard-Component-8533E8?style=for-the-badge)
 - [ ] implement responsive layout - ![Dashboard](https://img.shields.io/badge/Dashboard-Component-8533E8?style=for-the-badge)
 - [x] add task statistics - ![Dashboard](https://img.shields.io/badge/Dashboard-Component-8533E8?style=for-the-badge)
@@ -95,6 +95,8 @@
 > - Ensure basic functionalities from lab 9.3 are working
 > - Add Search functionality to search tasks by title or description in left sidebar
 > - Add `Clear filters` button
+> - `Clear filters` button implementation Completed
+> - Add Task functionality completed
 
 #### What is pending
 
