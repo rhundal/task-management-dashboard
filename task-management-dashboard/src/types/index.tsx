@@ -6,7 +6,7 @@ export interface Task {
   title: string;
   description: string;
   status: TaskStatus;
-  priority: "low" | "medium" | "high";
+  priority: "low" | "medium" | "high" | "";
   dueDate: string;
 }
 
@@ -41,6 +41,6 @@ export interface TaskFilterProps {
 // New Interfaces introduced
 
 export interface FormDataProps {
-
-  
+  tasksLength: number;
+  onTaskChange: (newTask: Task) => void;
 }

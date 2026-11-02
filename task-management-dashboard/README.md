@@ -1,32 +1,8 @@
-# React + TypeScript + Vite
+#### Reflection
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+- How you implemented React and TypeScript features?
+  - I made sure to implement components based on their given types and interfaces.
+- The challenges you encountered and how you overcame them
+  - I ran into challenges when changing the layout of my lab 9.3 to reflect > dashboard while moving components around. I decided to add another filter to interface `TaskFilterProps` in order to incorporate > search functionality into the TaskFilter component.
+- Your approach to component composition and state management
+  - I wasnt able to complete all the tasks but for the ones I did, I made small reusable components which I put together or nest as needed to create the entire dashboard.

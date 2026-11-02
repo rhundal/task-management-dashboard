@@ -82,27 +82,44 @@ export default function Dashboard() {
     },
   ];
 
-  const [tasks, setTasks] = useState<Task[]>(tasksArray);
+  const [allTasks, setAllTasks] = useState<Task[]>(tasksArray);
+
+  const [tasksLength, setTasksLength] = useState<number>(tasksArray.length);
 
   const [addTask, setAddTask] = useState(false);
 
+  const [displayedTasks, setDisplayedTasks] = useState<Task[]>(tasksArray);
+
   function onStatusChangeFunction(taskId: string, newStatus: TaskStatus) {
-    let selectedTask = tasks.find((task) => task.id === taskId);
+    let selectedTask = allTasks.find((task) => task.id === taskId);
     if (!selectedTask) return;
-    setTasks(
-      tasks.map((task) =>
+    setDisplayedTasks(
+      allTasks.map((task) =>
         task === selectedTask ? { ...task, status: newStatus } : task,
       ),
     );
   }
 
   function onDeleteFunction(taskId: string) {
-    let arrayAfterDeletion = tasks.filter((task) => task.id !== taskId);
-    setTasks(arrayAfterDeletion);
+    let arrayAfterDeletion = allTasks.filter((task) => task.id !== taskId);
+    setAllTasks(arrayAfterDeletion);
+    setDisplayedTasks(arrayAfterDeletion);
   }
 
+  function getNewTask(inComingTask: Task) {
+    const updatedTasks = [...allTasks, inComingTask];
+
+    setAllTasks(updatedTasks);
+    setDisplayedTasks(updatedTasks);
+    setAddTask(false);
+  }
+
+  // addTask ? setAddTask(false) : setAddTask(true);
+
   function handleAddTask() {
-    !addTask ? setAddTask(true) : setAddTask(false);
+    setAddTask((prev) => !prev);
+
+    console.log("task from dashboard");
   }
 
   // This function attempts to update tasks displayed on dashboard based on filters selected
@@ -113,10 +130,10 @@ export default function Dashboard() {
       searchString: userInput,
     } = incomingFilters;
 
-    let selectedTasks: Task[] = tasksArray;
-    setTasks(selectedTasks);
+    let selectedTasks: Task[] = allTasks;
+    // setTasks(selectedTasks);
 
-    selectedTasks = selectedTasks.filter(
+    selectedTasks = allTasks.filter(
       (task) =>
         (!selectedStatus || task.status === selectedStatus) &&
         (!selectedPriority || task.priority === selectedPriority) &&
@@ -125,7 +142,7 @@ export default function Dashboard() {
           task.title.toLowerCase().includes(userInput.toLowerCase())),
     );
 
-    setTasks(selectedTasks);
+    setDisplayedTasks(selectedTasks);
   }
 
   return (
@@ -161,15 +178,15 @@ export default function Dashboard() {
           <h1 className="text-txt-primary text-lg font-semibold">Status</h1>
           <TaskFilter onFilterChange={onFilterChangeFunc} />
         </div>
-        <div className="relative flex">
+        <div className="relative flex-[5] w-full">
           {addTask && (
-            <div className="absolute inset-0 z-50 bg-dashboard-bg/80 backdrop-blur-sm flex item-start justify-center">
-              <TaskForm />
+            <div className="absolute inset-0 z-50 bg-dashboard-bg/80 backdrop-blur-sm flex items-start justify-center">
+              <TaskForm onTaskChange={getNewTask} tasksLength={tasksLength} />
             </div>
           )}
           <div className="bg-dashboard-bg flex md:flex-[5] gap-5 min-w-0 mx-auto justify-center">
             <TaskList
-              tasks={tasks}
+              tasks={displayedTasks}
               // this function gets the status of selected task from TaskList Component
               onStatusChange={onStatusChangeFunction}
               // this function gets the id of selected task to be deleted from TaskList Component

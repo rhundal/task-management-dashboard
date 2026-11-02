@@ -86,15 +86,6 @@
 5. Utility Functions - responsible for task filtering logic, sorting functions, creative validation helpers, date formatting helpers
 6. Data Persistence - responsible for adding and integrating localstorage, implementing data export/import
 
-#### Reflection
-
-- How you implemented React and TypeScript features?
-  - I made sure to implement components based on their given types and interfaces.
-- The challenges you encountered and how you overcame them
-  - I ran into challenges when changing the layout of my lab 9.3 to reflect > dashboard while moving components around. I decided to add another filter to interface `TaskFilterProps` in order to incorporate > search functionality into the TaskFilter component.
-- Your approach to component composition and state management
-  - I wasnt able to complete all the tasks but for the ones I did, I made small reusable components which I put together or nest as needed to create the entire dashboard.
-
 #### Implementation Steps In Order (What is done)
 
 > Start with implmenting Dashboard Component
@@ -110,6 +101,7 @@
 > Features Pending (Working on them..)
 >
 > - Add Task
+>   - Fixing text color for when priority "high" is selected in the addTask form
 > - Move Tasks up and down by arrow within status
 > - Drag and Drop Tasks between lanes (across status)
 > - Fix and properly show all visual states for tasks
