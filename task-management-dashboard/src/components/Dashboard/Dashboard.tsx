@@ -102,13 +102,14 @@ export default function Dashboard() {
 
   function onDeleteFunction(taskId: string) {
     let arrayAfterDeletion = allTasks.filter((task) => task.id !== taskId);
+    setTasksLength(arrayAfterDeletion.length);
     setAllTasks(arrayAfterDeletion);
     setDisplayedTasks(arrayAfterDeletion);
   }
 
   function getNewTask(inComingTask: Task) {
     const updatedTasks = [...allTasks, inComingTask];
-
+    setTasksLength(updatedTasks.length);
     setAllTasks(updatedTasks);
     setDisplayedTasks(updatedTasks);
     setAddTask(false);

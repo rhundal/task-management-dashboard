@@ -9,19 +9,9 @@ export default function TaskForm(props: FormDataProps) {
   const [currentPriority, setCurrentPriority] = useState<
     "" | "low" | "medium" | "high"
   >("");
-  const [currentId, setCurrentId] = useState<string>("");
   const [currentDescription, setCurrentDescription] = useState<string>("");
   const [currentTitle, setCurrentTitle] = useState<string>("");
   const [dueDate, setDueDate] = useState<string>("");
-
-  const [newTask, setNewTask] = useState<Task>({
-    id: "",
-    title: "",
-    description: "",
-    status: "",
-    priority: "",
-    dueDate: "",
-  });
 
   // function handleSubmit() { }
 
@@ -40,8 +30,6 @@ export default function TaskForm(props: FormDataProps) {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const newId = (props.tasksLength + 1).toString();
-    setCurrentId(newId);
-    setCurrentId((props.tasksLength + 1).toString());
     let newTask: Task = {
       id: newId,
       title: currentTitle,
@@ -51,16 +39,7 @@ export default function TaskForm(props: FormDataProps) {
       dueDate: dueDate,
     };
 
-    setNewTask(newTask);
     props.onTaskChange(newTask);
-    setNewTask({
-      id: "",
-      title: "",
-      description: "",
-      status: "",
-      priority: "",
-      dueDate: "",
-    });
   }
 
   return (
